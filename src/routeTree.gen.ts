@@ -15,7 +15,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as StudentRouteImport } from './routes/student'
 import { Route as TeacherRouteImport } from './routes/teacher'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminContactInquiriesRouteImport } from './routes/admin.contact-inquiries'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminTrialRequestsRouteImport } from './routes/admin.trial-requests'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as TeacherIndexRouteImport } from './routes/teacher.index'
 
@@ -49,9 +51,19 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminContactInquiriesRoute = AdminContactInquiriesRouteImport.update({
+  id: '/contact-inquiries',
+  path: '/contact-inquiries',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTrialRequestsRoute = AdminTrialRequestsRouteImport.update({
+  id: '/trial-requests',
+  path: '/trial-requests',
   getParentRoute: () => AdminRoute,
 } as any)
 const StudentIndexRoute = StudentIndexRouteImport.update({
@@ -71,7 +83,9 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/student': typeof StudentRouteWithChildren
   '/teacher': typeof TeacherRouteWithChildren
+  '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -79,7 +93,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin': typeof AdminIndexRoute
   '/student': typeof StudentIndexRoute
   '/teacher': typeof TeacherIndexRoute
@@ -91,7 +107,9 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/student': typeof StudentRouteWithChildren
   '/teacher': typeof TeacherRouteWithChildren
+  '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
   '/teacher/': typeof TeacherIndexRoute
@@ -104,12 +122,22 @@ export interface FileRouteTypes {
     | '/login'
     | '/student'
     | '/teacher'
+    | '/admin/contact-inquiries'
     | '/admin/dashboard'
+    | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
     | '/teacher/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/admin/dashboard' | '/admin' | '/student' | '/teacher'
+  to:
+    | '/'
+    | '/login'
+    | '/admin/contact-inquiries'
+    | '/admin/dashboard'
+    | '/admin/trial-requests'
+    | '/admin'
+    | '/student'
+    | '/teacher'
   id:
     | '__root__'
     | '/'
@@ -117,7 +145,9 @@ export interface FileRouteTypes {
     | '/login'
     | '/student'
     | '/teacher'
+    | '/admin/contact-inquiries'
     | '/admin/dashboard'
+    | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
     | '/teacher/'
@@ -175,11 +205,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/contact-inquiries': {
+      id: '/admin/contact-inquiries'
+      path: '/contact-inquiries'
+      fullPath: '/admin/contact-inquiries'
+      preLoaderRoute: typeof AdminContactInquiriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/trial-requests': {
+      id: '/admin/trial-requests'
+      path: '/trial-requests'
+      fullPath: '/admin/trial-requests'
+      preLoaderRoute: typeof AdminTrialRequestsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/student/': {
@@ -200,12 +244,16 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminContactInquiriesRoute: typeof AdminContactInquiriesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminTrialRequestsRoute: typeof AdminTrialRequestsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminContactInquiriesRoute: AdminContactInquiriesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminTrialRequestsRoute: AdminTrialRequestsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
