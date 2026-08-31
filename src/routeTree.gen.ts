@@ -17,6 +17,7 @@ import { Route as TeacherRouteImport } from './routes/teacher'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminContactInquiriesRouteImport } from './routes/admin.contact-inquiries'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminStudentsRouteImport } from './routes/admin.students'
 import { Route as AdminTrialRequestsRouteImport } from './routes/admin.trial-requests'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as TeacherIndexRouteImport } from './routes/teacher.index'
@@ -61,6 +62,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminStudentsRoute = AdminStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminTrialRequestsRoute = AdminTrialRequestsRouteImport.update({
   id: '/trial-requests',
   path: '/trial-requests',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/teacher': typeof TeacherRouteWithChildren
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin': typeof AdminIndexRoute
   '/student': typeof StudentIndexRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/teacher': typeof TeacherRouteWithChildren
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/students': typeof AdminStudentsRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/teacher'
     | '/admin/contact-inquiries'
     | '/admin/dashboard'
+    | '/admin/students'
     | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/admin/contact-inquiries'
     | '/admin/dashboard'
+    | '/admin/students'
     | '/admin/trial-requests'
     | '/admin'
     | '/student'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
     | '/teacher'
     | '/admin/contact-inquiries'
     | '/admin/dashboard'
+    | '/admin/students'
     | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
@@ -219,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/students': {
+      id: '/admin/students'
+      path: '/students'
+      fullPath: '/admin/students'
+      preLoaderRoute: typeof AdminStudentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/trial-requests': {
       id: '/admin/trial-requests'
       path: '/trial-requests'
@@ -246,6 +265,7 @@ declare module '@tanstack/react-router' {
 interface AdminRouteChildren {
   AdminContactInquiriesRoute: typeof AdminContactInquiriesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminStudentsRoute: typeof AdminStudentsRoute
   AdminTrialRequestsRoute: typeof AdminTrialRequestsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -253,6 +273,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminContactInquiriesRoute: AdminContactInquiriesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminStudentsRoute: AdminStudentsRoute,
   AdminTrialRequestsRoute: AdminTrialRequestsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
