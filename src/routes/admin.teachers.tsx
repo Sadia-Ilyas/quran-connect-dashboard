@@ -35,7 +35,7 @@ export const Route = createFileRoute("/admin/teachers")({
       { property: "og:description", content: "Manage teaching staff and specialisations." },
     ],
   }),
-  component: AdminTeachers;
+  component: AdminTeachers,
 });
 
 const SPECIALIZATIONS: Specialization[] = ["Tajweed", "Hifz", "Translation", "Qaida", "Arabic"];

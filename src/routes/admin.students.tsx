@@ -65,16 +65,8 @@ interface FormState {
 }
 
 function AdminStudents() {
-  const {
-    students,
-    teachers,
-    courses,
-    slots,
-    addStudent,
-    updateStudent,
-    removeStudent,
-    addSlot,
-  } = useDashboard();
+  const { students, teachers, courses, slots, addStudent, updateStudent, removeStudent } =
+    useDashboard();
 
   const [query, setQuery] = useState("");
   const [teacherFilter, setTeacherFilter] = useState("all");
