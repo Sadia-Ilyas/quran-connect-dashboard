@@ -16,7 +16,12 @@ import { Route as StudentRouteImport } from './routes/student'
 import { Route as TeacherRouteImport } from './routes/teacher'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminContactInquiriesRouteImport } from './routes/admin.contact-inquiries'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminStudentsRouteImport } from './routes/admin.students'
+import { Route as AdminTeachersRouteImport } from './routes/admin.teachers'
 import { Route as AdminTrialRequestsRouteImport } from './routes/admin.trial-requests'
 import { Route as StudentIndexRouteImport } from './routes/student.index'
 import { Route as TeacherIndexRouteImport } from './routes/teacher.index'
@@ -56,9 +61,34 @@ const AdminContactInquiriesRoute = AdminContactInquiriesRouteImport.update({
   path: '/contact-inquiries',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCoursesRoute = AdminCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStudentsRoute = AdminStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTeachersRoute = AdminTeachersRouteImport.update({
+  id: '/teachers',
+  path: '/teachers',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminTrialRequestsRoute = AdminTrialRequestsRouteImport.update({
@@ -84,7 +114,12 @@ export interface FileRoutesByFullPath {
   '/student': typeof StudentRouteWithChildren
   '/teacher': typeof TeacherRouteWithChildren
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/courses': typeof AdminCoursesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -94,7 +129,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/courses': typeof AdminCoursesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin': typeof AdminIndexRoute
   '/student': typeof StudentIndexRoute
@@ -108,7 +148,12 @@ export interface FileRoutesById {
   '/student': typeof StudentRouteWithChildren
   '/teacher': typeof TeacherRouteWithChildren
   '/admin/contact-inquiries': typeof AdminContactInquiriesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/courses': typeof AdminCoursesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/students': typeof AdminStudentsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
   '/admin/trial-requests': typeof AdminTrialRequestsRoute
   '/admin/': typeof AdminIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -123,7 +168,12 @@ export interface FileRouteTypes {
     | '/student'
     | '/teacher'
     | '/admin/contact-inquiries'
+    | '/admin/content'
+    | '/admin/courses'
     | '/admin/dashboard'
+    | '/admin/settings'
+    | '/admin/students'
+    | '/admin/teachers'
     | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
@@ -133,7 +183,12 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/admin/contact-inquiries'
+    | '/admin/content'
+    | '/admin/courses'
     | '/admin/dashboard'
+    | '/admin/settings'
+    | '/admin/students'
+    | '/admin/teachers'
     | '/admin/trial-requests'
     | '/admin'
     | '/student'
@@ -146,7 +201,12 @@ export interface FileRouteTypes {
     | '/student'
     | '/teacher'
     | '/admin/contact-inquiries'
+    | '/admin/content'
+    | '/admin/courses'
     | '/admin/dashboard'
+    | '/admin/settings'
+    | '/admin/students'
+    | '/admin/teachers'
     | '/admin/trial-requests'
     | '/admin/'
     | '/student/'
@@ -212,11 +272,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContactInquiriesRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/courses': {
+      id: '/admin/courses'
+      path: '/courses'
+      fullPath: '/admin/courses'
+      preLoaderRoute: typeof AdminCoursesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/students': {
+      id: '/admin/students'
+      path: '/students'
+      fullPath: '/admin/students'
+      preLoaderRoute: typeof AdminStudentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/teachers': {
+      id: '/admin/teachers'
+      path: '/teachers'
+      fullPath: '/admin/teachers'
+      preLoaderRoute: typeof AdminTeachersRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/trial-requests': {
@@ -245,14 +340,24 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminContactInquiriesRoute: typeof AdminContactInquiriesRoute
+  AdminContentRoute: typeof AdminContentRoute
+  AdminCoursesRoute: typeof AdminCoursesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminStudentsRoute: typeof AdminStudentsRoute
+  AdminTeachersRoute: typeof AdminTeachersRoute
   AdminTrialRequestsRoute: typeof AdminTrialRequestsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminContactInquiriesRoute: AdminContactInquiriesRoute,
+  AdminContentRoute: AdminContentRoute,
+  AdminCoursesRoute: AdminCoursesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminStudentsRoute: AdminStudentsRoute,
+  AdminTeachersRoute: AdminTeachersRoute,
   AdminTrialRequestsRoute: AdminTrialRequestsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
