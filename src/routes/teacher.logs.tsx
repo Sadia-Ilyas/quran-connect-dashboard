@@ -47,7 +47,7 @@ export const Route = createFileRoute("/teacher/logs")({
       { property: "og:description", content: "Submit and review daily Quran lesson logs." },
     ],
   }),
-  component: TeacherLogs;
+  component: TeacherLogs,
 });
 
 const ATTENDANCE: AttendanceStatus[] = ["Present", "Absent", "Cancelled"];
