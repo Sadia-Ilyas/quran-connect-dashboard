@@ -96,9 +96,10 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   );
 
   const updateUser: DashboardValue["updateUser"] = (id, patch) => {
-    if (id === admin.id) setAdmin((a) => ({ ...a, ...patch }));
-    setTeachers((ts) => ts.map((t) => (t.id === id ? { ...t, ...patch } : t)));
-    setStudents((ss) => ss.map((s) => (s.id === id ? { ...s, ...patch } : s)));
+    const { role: _role, ...rest } = patch;
+    if (id === admin.id) setAdmin((a) => ({ ...a, ...rest }));
+    setTeachers((ts) => ts.map((t) => (t.id === id ? { ...t, ...rest } : t)));
+    setStudents((ss) => ss.map((s) => (s.id === id ? { ...s, ...rest } : s)));
   };
 
   const value: DashboardValue = {
